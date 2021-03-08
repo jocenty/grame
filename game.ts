@@ -347,7 +347,7 @@ class Game {
     setCameraDefaultPos() {
         this._camera.target.set(0, 3, 0);
         // this._camera.setPosition(new Vector3(21.671129976688086, 5.063555890244604, 10.74778938175888));
-        this._camera.setPosition(new Vector3(21.671129976688086, 5.063555890244604, -10.74778938175888));
+        this._camera.setPosition(new Vector3(37.671129976688086, 9.863555890244604, -13.74778938175888));
         this._camera.pinchPrecision = 1000 / this._camera.radius;
         this._camera.upperRadiusLimit = this._camera.radius;
         this._camera.lowerRadiusLimit = this._camera.radius;
@@ -911,13 +911,15 @@ class Game {
     }
 
     syncUI() {
-        const showWidthAlpha = Math.abs(this._camera.alpha % (2 * Math.PI)) < Math.PI / 5;
+        const showWidthAlpha = Math.abs(this._camera.alpha % (2 * Math.PI)) < Math.PI / 4;
         const showLengthAlpha =
-            (Math.abs(this._camera.alpha % (2 * Math.PI)) > 1.15 &&
-                Math.abs(this._camera.alpha % (2 * Math.PI)) < 1.85) ||
-            (Math.abs(this._camera.alpha % (2 * Math.PI)) > 4 && Math.abs(this._camera.alpha % (2 * Math.PI)) < 4.85);
+            (Math.abs(this._camera.alpha % (2 * Math.PI)) > 0.7853981633974483 &&
+                Math.abs(this._camera.alpha % (2 * Math.PI)) < 2.356194490192345) ||
+            (Math.abs(this._camera.alpha % (2 * Math.PI)) > 3.9269908169872414 &&
+                Math.abs(this._camera.alpha % (2 * Math.PI)) < 5.497787143782138);
         const showParmAlpha =
-            Math.abs(this._camera.alpha % (2 * Math.PI)) > 2.5 && Math.abs(this._camera.alpha % (2 * Math.PI)) < 3.7;
+            Math.abs(this._camera.alpha % (2 * Math.PI)) > 2.356194490192345 &&
+            Math.abs(this._camera.alpha % (2 * Math.PI)) < 3.9269908169872414;
 
         if (!this.first && (showWidthAlpha || showLengthAlpha || showParmAlpha)) {
             addClass("#drawingLayer", "active");
